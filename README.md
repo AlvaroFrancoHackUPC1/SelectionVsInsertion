@@ -12,7 +12,7 @@ To deploy this project run
 To run the comparison
 
 ```bash
-  ./pe_data.exe > a.out
+  ./pe_data.exe
 ```
 
 
