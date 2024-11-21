@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -43,6 +44,13 @@ double selection_sort(vector<int> &v) {
 }
 
 int main() {
+    ofstream file("resultados.csv");
+    if (!file.is_open()) {
+        cerr << "No se pudo abrir el archivo" << endl;
+        return 1;
+    }
+    file << "Tamaño_Vector,Tiempo_Insertion,Tiempo_Selection\n";
+
     for(int i = 0; i < 50; ++i) {
         double insertion_time = 0;
         double selection_time = 0;
@@ -55,21 +63,17 @@ int main() {
             // Cada valor de vector és 0 <= v[j] <= 10^6
             v[j] = v_aux[j] = (rand()%int(pow(10,6)+1));
         }
-        cout << "La mida de vector és:" << v_size << endl;
-
+        
         // L'ordre d'execució dels programes es totalment aleatori
         bool ordre = rand()%2;
         if(ordre) {
             insertion_time = insertion_sort(v);
             selection_time = selection_sort(v_aux);
-            cout << "Primer, insertion_sort: el temps d'ordenació és : " << insertion_time << endl << "Segon, selection_sort: el temps d'ordenació és : " << selection_time << endl << endl;
         }
         else {
             selection_time = selection_sort(v_aux);
             insertion_time = insertion_sort(v);
-            cout << "Primer, selection_sort: el temps d'ordenació és : " << insertion_time << endl << "Segon, insertion_sort: el temps d'ordenació és : " << selection_time << endl << endl;
         }
-        //cout << "Temps total per l'ordenació és: "  << insertion_time + selection_time << endl << endl;
+        file << v_size << "," << insertion_time << "," << selection_time << "\n";
     }
-
 }
