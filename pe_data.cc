@@ -55,7 +55,7 @@ double selection_sort(vector<int> &v) {
 
 int main() {
 
-    for(int i = 0; i < 1000; ++i) {
+    for(int i = 0; i < 50; ++i) {
         double insertion_time = 0;
         double selection_time = 0;
 
