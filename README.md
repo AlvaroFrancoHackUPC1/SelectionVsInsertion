@@ -7,7 +7,7 @@ Comparación entre insertion sort vs selection sort
 To deploy this project run
 
 ```bash
-  g++ pe_data.cc -o pe_data.exe
+  make
 ```
 To run the comparison
 
